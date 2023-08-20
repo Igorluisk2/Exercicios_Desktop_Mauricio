@@ -8,12 +8,6 @@ class Banco(QWidget):
         self.setWindowTitle("Vulgo-Senacoin")
         self.layout = QVBoxLayout()
 
-        #Saldo Cliente
-        self.list_saldo = []
-        self.list_nome = []
-        self.list_conta = []
-
-
 
         #Cadastro Cliente
         self.lbl_nome = QLabel("Nome:")
@@ -50,18 +44,26 @@ class Banco(QWidget):
 
     def cadastro(self):
         self.saldo = float(self.inp_deposito_inicial.text())
-        self.nome = (self.inp_nome.text())
+        self.nome = self.inp_nome.text()
         self.conta = int(self.inp_numero_conta.text())
 
-        self.text_cadastro.append(f"Cadastro Feito com sucesso!\n","Saldo:", self.saldo,"\n","Nome do Titular:",self.nome,"\n","Numero da Conta:",self.conta)
+        self.text_cadastro.append(f"\nNome do Titular: {self.nome}\nNúmero da Conta: {self.conta}\nSaldo: R${self.saldo}\nCadastro Feito com sucesso!\n")
 
     def deposito(self):
-        self.text_cadastro.append(f"Deposito Feito com Sucesso!")
+        self.deposito_saldo = float(self.inp_deposito_inicial.text())
+        self.saldo = self.saldo + self.deposito_saldo
+        self.text_cadastro.append(f"\nDeposito Feito!\nNome do Titular: {self.nome}\nNúmero da Conta: {self.conta}\nSaldo: R${self.saldo}\n")
 
     def saque(self):
-        self.text_cadastro.append(f"Você Sacou!")
+        #Arrrumar o saque !!!!!
+        self.deposito_saldo = float(self.inp_deposito_inicial.text())
+        self.saldo =  (self.deposito_saldo + 5) 
+        if self.saldo < 0:
+            self.text_cadastro.append(f"\nSaldo insuficente para saque!\n")
+        else:
+            self.text_cadastro.append(f"\nVocê Sacou!\nNome do Titular: {self.nome}\nNúmero da Conta: {self.conta}\nSaldo: R${self.saldo}\n")
 
-appl = QApplication()
-window = Banco()
+appl = QApplication(sys.argv)
+window = Banco() 
 window.show()
 appl.exec()
