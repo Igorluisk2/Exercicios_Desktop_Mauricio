@@ -1,84 +1,120 @@
-from typing import Optional
-import PySide2.QtCore
-from PySide2.QtWidgets import QMainWindow,QApplication,QPushButton,QLabel,QLayout,QLineEdit,QHBoxLayout,QVBoxLayout,QWidget,QTextBrowser,QCheckBox
+from PySide2.QtCore import QSize
 import sys
-class Banco(QWidget):
+from PySide2.QtWidgets import QApplication, QMainWindow, QLabel, QPushButton, QLabel, QLineEdit,QCheckBox,QFormLayout,QWidget
 
-
+class Mainwindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Vulgo-Senacoin")
-        self.layout = QVBoxLayout()
-        self.layout_hor = QHBoxLayout()
-
-        #Cadastro Cliente
-        self.lbl_nome = QLabel("Nome:")
-        self.lbl_numero_conta = QLabel("Número da Conta:")
-        # self.lbl_deposito_inicial = QLabel("Deposito Inicial:")
-        self.lbl_saldo = QLabel("Valor:")
         
-        self.inp_nome = QLineEdit(self)
-        self.inp_numero_conta = QLineEdit(self)
-        # self.inp_deposito_inicial = QLineEdit(self)
-        self.inp_saldo = QLineEdit(self)
-        self.text_cadastro = QTextBrowser(self)
-
-        #Botão
-        self.btn_cadastro = QPushButton("Cadastrar")
-        self.btn_deposito = QPushButton("Depositar")
-        self.btn_sacar = QPushButton("Sacar")
-        self.btn_cadastro.clicked.connect(self.cadastro)
-        self.btn_deposito.clicked.connect(self.deposito)
-        self.btn_sacar.clicked.connect(self.saque)
+        ##titulo da janela##
+        self.setWindowTitle('Seu Banco')
+        self.setFixedSize(QSize(700,500))
+        
+        ##linhas para digitar a agencia e conta##
+        self.agencia=QLineEdit(self)
+        self.conta=QLineEdit(self)
+        
+        ##label para perguntar se deseja deposito inicial##
+        self.pergunta=QLabel('Deseja fazer deposito inicial?')
+    
+        ##chekbox para responder a pergunta do deposito inicial##
+        self.depositoS=QCheckBox('Sim')
+        self.depositoN=QCheckBox('Não')
+        self.depositoS.stateChanged.connect(self.state)
+        self.depositoN.stateChanged.connect(self.state2)
+        
+        ##linha para digitar o valor do dep inicial##
+        self.valorDepInicial_Qline=QLineEdit(self)
+        self.totaldep=self.valorDepInicial_Qline
         
         
-        #Colocando os Widgets
-        self.layout.addWidget(self.lbl_nome)
-        self.layout.addWidget(self.inp_nome)
-        self.layout.addWidget(self.lbl_numero_conta)
-        self.layout.addWidget(self.inp_numero_conta)
-        self.layout.addWidget(self.lbl_saldo)
-        self.layout.addWidget(self.inp_saldo)
-        # self.layout.addWidget(self.lbl_deposito_inicial)
-        # self.layout.addWidget(self.inp_deposito_inicial)
-        self.layout.addWidget(self.btn_cadastro)
-        self.layout.addWidget(self.btn_deposito)
-        self.layout.addWidget(self.btn_sacar)
-        self.layout.addWidget(self.text_cadastro)
-        self.setLayout(self.layout)
         
-
-
-
-    def cadastro(self,valor):
-        self.valor  = valor 
-        self.valor = float(self.inp_saldo.text())
-        self.nome = self.inp_nome.text()
-        self.conta = int(self.inp_numero_conta.text())
-
-        self.text_cadastro.append(f"\nNome do Titular: {self.nome}\nNúmero da Conta: {self.conta}\nSaldo: R${self.valor}\nCadastro Feito com sucesso!\n")
-
-
-    def deposito(self,valor):
+        ##label para mostrar o valor digitado 
+        self.valorDepInicial_Qlabel=QLabel()
         
-        self.valor  = valor 
-        valor = valor + float(self.inp_saldo.text())
-        self.text_cadastro.append(f"\nDeposito Feito!\nNome do Titular: {self.nome}\nNúmero da Conta: {self.conta}\nSaldo: R${valor}\n")
-
-
-    def saque(self,valor):
-
-        self.valor = valor 
-        valor = float(self.inp_saldo.text())
-        valor = valor - float(self.inp_saldo.text()) - 5
-
-        if valor < 0:
-            self.text_cadastro.append(f"\nSaldo insuficente para saque!\n")
-        else:
-            self.text_cadastro.append(f"\nVocê Sacou!\nNome do Titular: {self.nome}\nNúmero da Conta: {self.conta}\nSaldo: R${valor}\n")
-
+        
+        #botão para abrir a conta#
+        self.abrirContaButton=QPushButton('Abrir conta',self)
+        self.abrirContaButton.clicked.connect(self.cadastrar_conta)
+        
+        #espaço que mostra os dados da conta
+        self.registrarConta=QLabel(self)
+        
+        #botao para depositar
+        self.depButton=QPushButton('Depositar',self)
+        self.depButton.clicked.connect(self.depositar)
+        
+        #linha para digitar o valor dep apos abertura da conta
+        self.valor_Qline=QLineEdit(self)
+        
+        #label para mostrar o resultado do dep apos abertura da conta
+        self.valor_Qlabel=QLabel(self)
+        
+        #botao sacar
+        self.sacar_QButon=QPushButton('Sacar',self)
+        self.sacar_QButon.clicked.connect(self.sacar)
+        
+        #linha para sacar
+        self.sacar_Qline=QLineEdit(self)
+        
+        #label para mostrar o resultado do saque
+        self.sacar_Qlabel=QLabel()
+        
+        ##formatação dos Widgets##
+        pagina=QFormLayout(self)
+        pagina.addRow('Agência = ',self.agencia)
+        pagina.addRow('Conta = ',self.conta)
+        pagina.addRow(self.pergunta)
+        pagina.addRow(self.depositoS)
+        pagina.addRow(self.depositoN)
+        pagina.addRow('valor que deseja depositar\saldo = ',self.totaldep)
+        pagina.addRow(self.abrirContaButton)
+        pagina.addRow(self.registrarConta)
+        pagina.addRow('Valor do deposito = ',self.valor_Qline)
+        pagina.addRow(self.depButton)
+        pagina.addRow(self.valor_Qlabel)
+        pagina.addRow('valor do saque(ATENÇÃO!! cobrança de R$ 5,00 por saque) = ',self.sacar_Qline)
+        pagina.addRow(self.sacar_QButon)
+        pagina.addRow(self.sacar_Qlabel)
+        widgetFORmulario = QWidget()
+        widgetFORmulario.setLayout(pagina)
+        self.setCentralWidget(widgetFORmulario)
+        
+        
+    def state(self,s):#se tiver dep inicial#
+        if s == 2:
+            self.depositoN.deleteLater() 
+            self.totaldep.text()
             
-appl = QApplication(sys.argv)
-window = Banco() 
-window.show()
-appl.exec_()
+            
+    def state2(self, s):#se não tiver dep inicial#
+        if s == 2:
+            self.depositoS.deleteLater()
+            self.totaldep.setText('0')
+            
+    def cadastrar_conta(self):
+        self.registrarConta.setText('Conta Aberta com sucesso!!!\nAgência = {}\nConta = {}\nSaldo = R$ {},00'
+        .format(self.agencia.text(), self.conta.text(), self.totaldep.text()))
+        self.abrirContaButton.deleteLater()
+        
+        
+    def depositar(self):
+        self.saldo=int(self.valor_Qline.text())+int(self.totaldep.text())
+        self.saldostr=str(self.saldo)
+        self.valor_Qlabel.setText('Saldo = R$ {},00'.format(self.saldo))
+        self.totaldep.setText(self.saldostr)
+        
+    def sacar(self):
+        self.retirar=int(self.totaldep.text())-int(self.sacar_Qline.text())-5
+        self.retirarstr=str(self.retirar)
+        
+        if self.retirar>=0:
+            self.sacar_Qlabel.setText('Saldo  = R$ {},00'.format(self.retirar))
+            self.totaldep.setText(self.retirarstr)
+        else:
+            self.sacar_Qlabel.setText('Saldo insuficiente!!\nFavor entrar em contato com seu gerente para uma possível liberação de limite de conta')
+        
+app = QApplication(sys.argv)
+w = Mainwindow()
+w.show()
+app.exec_()

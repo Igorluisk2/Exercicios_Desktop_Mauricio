@@ -1,6 +1,6 @@
 #Main Banco
 from app import *
 appl = QApplication(sys.argv)
-window = Banco() 
+window = Mainwindow() 
 window.show()
-appl.exec()
+appl.exec_()
