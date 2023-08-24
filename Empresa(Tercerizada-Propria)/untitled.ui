@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1092</width>
-    <height>600</height>
+    <height>589</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -75,7 +75,7 @@ QLabel{
           <item>
            <widget class="QLabel" name="label_3">
             <property name="text">
-             <string>Pytax</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Pytax&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -143,7 +143,7 @@ QPushButton{
                <x>0</x>
                <y>0</y>
                <width>182</width>
-               <height>479</height>
+               <height>463</height>
               </rect>
              </property>
              <attribute name="label">
@@ -294,7 +294,7 @@ QPushButton{
                <x>0</x>
                <y>0</y>
                <width>182</width>
-               <height>479</height>
+               <height>463</height>
               </rect>
              </property>
              <attribute name="label">
@@ -383,7 +383,7 @@ QPushButton{
           <item>
            <widget class="QLabel" name="btn_toggle">
             <property name="text">
-             <string>Sistema de Cadastro</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Sistema de Cadastro&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -426,7 +426,7 @@ QPushButton{
           <item>
            <widget class="QStackedWidget" name="Pages">
             <property name="currentIndex">
-             <number>2</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="pg_home">
              <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -444,7 +444,7 @@ QPushButton{
               <item>
                <widget class="QTabWidget" name="tabWidget">
                 <property name="currentIndex">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="tab">
                  <attribute name="title">
@@ -816,14 +816,32 @@ background-color: rgb(230,230,230);
              <widget class="QLabel" name="label_6">
               <property name="geometry">
                <rect>
-                <x>220</x>
-                <y>60</y>
-                <width>131</width>
+                <x>360</x>
+                <y>250</y>
+                <width>221</width>
                 <height>41</height>
                </rect>
               </property>
               <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/icons/icons/whatsApp.png&quot;/&gt;(67)9949-2638&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/icons/icons/whatsApp.png&quot;/&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt; (67) 9949-2638&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="lbl_contato">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>891</width>
+                <height>111</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color:rgb(252,252,252);
+background-color: rgb(62, 62, 62);
+</string>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Contato&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
              </widget>
             </widget>
@@ -832,7 +850,7 @@ background-color: rgb(230,230,230);
               <item>
                <widget class="QLabel" name="label_7">
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;SOBRE&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600;&quot;&gt;SOBRE&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                </widget>
               </item>
@@ -877,7 +895,7 @@ background-color: rgb(230,230,230);
           <item>
            <widget class="QLabel" name="label_2">
             <property name="text">
-             <string>Pytax</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;©Pytax 2023&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
