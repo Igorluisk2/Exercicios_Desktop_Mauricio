@@ -12,12 +12,6 @@ class MainWindow(QWidget):
         #Ajustando o Layou da janela
         self.layout = QVBoxLayout(self)
         
-       
-        #Listas Produtos
-        list_nome_prod = []
-        list_preco_prod = []
-        list_quantidade_prod = []
-        
         #Labels
         #Cadastrar os produtos do mercado
         self.lbl_mercado = QLabel("Bem Vindos ao Mercado do Senac!")
@@ -45,6 +39,7 @@ class MainWindow(QWidget):
         self.layout.addWidget(self.lbl_prod_preco)
         self.layout.addWidget(self.inp_prod_preco)
         self.layout.addWidget(self.lbl_prod_unid)
+        
         self.layout.addWidget(self.inp_prod_unid)
         self.layout.addWidget(self.btn_cadastrar_produto)
         self.layout.addWidget(self.caixa_texto)
@@ -66,6 +61,7 @@ class MainWindow(QWidget):
             list_nome_prod.append(nome)
             list_preco_prod.append(preco)
             list_quantidade_prod.append(quantidade)
+            self.caixa_texto.setText(f"{list_nome_prod}\n{list_preco_prod}\n{list_quantidade_prod}")
             
         
 app = QApplication(sys.argv)
