@@ -1,14 +1,15 @@
 #Mercado
 import typing
 import sys
-from PySide2.QtWidgets import QApplication,QMainWindow,QLabel,QLineEdit,QVBoxLayout,QWidget,QPushButton,QTextBrowser
-from PySide2.QtCore import Qt
+from PySide6.QtWidgets import QApplication,QMainWindow,QLabel,QLineEdit,QVBoxLayout,QWidget,QPushButton,QTextBrowser
+from PySide6.QtCore import Qt
 
 
-class MainWindow(QWidget):
+class Cadastro(QWidget):
     def __init__(self) :
         super().__init__()
         self.setWindowTitle("Mercado Senac")
+        self.setFixedSize(600,500)
         #Ajustando o Layou da janela
         self.layout = QVBoxLayout(self)
         
@@ -61,10 +62,11 @@ class MainWindow(QWidget):
             list_nome_prod.append(nome)
             list_preco_prod.append(preco)
             list_quantidade_prod.append(quantidade)
-            self.caixa_texto.setText(f"{list_nome_prod}\n{list_preco_prod}\n{list_quantidade_prod}")
+            self.caixa_texto.setText(f"Produto Cadastrado com sucesso!\nProduto: {nome}\nPreço: {preco}\nQuantidade: {quantidade}")
+            
             
         
 app = QApplication(sys.argv)
-w = MainWindow()
+w = Cadastro()
 w.show()
-app.exec_()
+app.exec()
