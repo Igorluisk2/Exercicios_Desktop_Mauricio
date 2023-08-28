@@ -8,8 +8,6 @@ from PySide2.QtCore import Qt
 class Cadastro(QWidget):
     def __init__(self) :
         super().__init__()
-        self.setWindowTitle("Cadastro de Produto")
-        self.setFixedSize(600,500)
         #Ajustando o Layou da janela
         self.layout = QVBoxLayout(self)
         
