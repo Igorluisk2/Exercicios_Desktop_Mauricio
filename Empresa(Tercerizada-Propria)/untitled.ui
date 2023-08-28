@@ -294,7 +294,7 @@ QPushButton{
                <x>0</x>
                <y>0</y>
                <width>97</width>
-               <height>463</height>
+               <height>446</height>
               </rect>
              </property>
              <attribute name="label">
@@ -364,7 +364,7 @@ QPushButton{
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item alignment="Qt::AlignLeft">
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="btn_toggle">
             <property name="text">
              <string/>
             </property>
@@ -381,7 +381,7 @@ QPushButton{
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="btn_toggle">
+           <widget class="QLabel" name="lbl_sistema">
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;Sistema de Cadastro&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -426,7 +426,7 @@ QPushButton{
           <item>
            <widget class="QStackedWidget" name="Pages">
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="pg_home">
              <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -444,7 +444,7 @@ QPushButton{
               <item>
                <widget class="QTabWidget" name="tabWidget">
                 <property name="currentIndex">
-                 <number>0</number>
+                 <number>1</number>
                 </property>
                 <widget class="QWidget" name="tab">
                  <attribute name="title">
@@ -670,7 +670,7 @@ QTableWidget{
                       </column>
                       <column>
                        <property name="text">
-                        <string>New Column</string>
+                        <string>NUMERO</string>
                        </property>
                       </column>
                       <column>
@@ -686,6 +686,16 @@ QTableWidget{
                       <column>
                        <property name="text">
                         <string>MUNICIPIO</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>UF</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>CEP</string>
                        </property>
                       </column>
                       <column>

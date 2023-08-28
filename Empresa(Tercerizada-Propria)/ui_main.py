@@ -153,7 +153,7 @@ class Ui_MainWindow(object):
         self.toolBox.addItem(self.page, u"Page 1")
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
-        self.page_2.setGeometry(QRect(0, 0, 97, 463))
+        self.page_2.setGeometry(QRect(0, 0, 97, 446))
         self.horizontalLayout_5 = QHBoxLayout(self.page_2)
         self.horizontalLayout_5.setSpacing(0)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
@@ -187,19 +187,19 @@ class Ui_MainWindow(object):
         self.top_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.top_frame)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.pushButton = QPushButton(self.top_frame)
-        self.pushButton.setObjectName(u"pushButton")
+        self.btn_toggle = QPushButton(self.top_frame)
+        self.btn_toggle.setObjectName(u"btn_toggle")
         icon = QIcon()
         icon.addFile(u":/icons/icons/menu2.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton.setIcon(icon)
-        self.pushButton.setIconSize(QSize(32, 32))
+        self.btn_toggle.setIcon(icon)
+        self.btn_toggle.setIconSize(QSize(32, 32))
 
-        self.horizontalLayout_2.addWidget(self.pushButton, 0, Qt.AlignLeft)
+        self.horizontalLayout_2.addWidget(self.btn_toggle, 0, Qt.AlignLeft)
 
-        self.btn_toggle = QLabel(self.top_frame)
-        self.btn_toggle.setObjectName(u"btn_toggle")
+        self.lbl_sistema = QLabel(self.top_frame)
+        self.lbl_sistema.setObjectName(u"lbl_sistema")
 
-        self.horizontalLayout_2.addWidget(self.btn_toggle)
+        self.horizontalLayout_2.addWidget(self.lbl_sistema)
 
 
         self.verticalLayout.addWidget(self.top_frame)
@@ -360,8 +360,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.tableWidget = QTableWidget(self.tab_2)
-        if (self.tableWidget.columnCount() < 9):
-            self.tableWidget.setColumnCount(9)
+        if (self.tableWidget.columnCount() < 11):
+            self.tableWidget.setColumnCount(11)
         __qtablewidgetitem = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
@@ -380,6 +380,10 @@ class Ui_MainWindow(object):
         self.tableWidget.setHorizontalHeaderItem(7, __qtablewidgetitem7)
         __qtablewidgetitem8 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(8, __qtablewidgetitem8)
+        __qtablewidgetitem9 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(9, __qtablewidgetitem9)
+        __qtablewidgetitem10 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(10, __qtablewidgetitem10)
         self.tableWidget.setObjectName(u"tableWidget")
         self.tableWidget.setStyleSheet(u"QHeaderView::section{\n"
 "background-color:rgb(148,148,148);\n"
@@ -518,8 +522,8 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.toolBox.setCurrentIndex(0)
-        self.Pages.setCurrentIndex(0)
-        self.tabWidget.setCurrentIndex(0)
+        self.Pages.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -535,8 +539,8 @@ class Ui_MainWindow(object):
         self.toolBox.setItemText(self.toolBox.indexOf(self.page), QCoreApplication.translate("MainWindow", u"Page 1", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Usu\u00e1rio: PyTax</p><p align=\"center\">Sistema: Cadastro</p><p align=\"center\">Status: Ativo</p><p align=\"center\">Venc: 12/12/2077</p></body></html>", None))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page_2), QCoreApplication.translate("MainWindow", u"Page 2", None))
-        self.pushButton.setText("")
-        self.btn_toggle.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt;\">Sistema de Cadastro</span></p></body></html>", None))
+        self.btn_toggle.setText("")
+        self.lbl_sistema.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt;\">Sistema de Cadastro</span></p></body></html>", None))
         self.logo.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><img src=\":/icons/icons/logo4.png\"/></p></body></html>", None))
         self.txt_cnpj.setPlaceholderText(QCoreApplication.translate("MainWindow", u"CNPJ", None))
         self.txt_nome.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Nome empresarial", None))
@@ -559,7 +563,7 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"LOGRADOURO", None));
         ___qtablewidgetitem3 = self.tableWidget.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"New Column", None));
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"NUMERO", None));
         ___qtablewidgetitem4 = self.tableWidget.horizontalHeaderItem(4)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"COMPLEMENTO", None));
         ___qtablewidgetitem5 = self.tableWidget.horizontalHeaderItem(5)
@@ -567,9 +571,13 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem6 = self.tableWidget.horizontalHeaderItem(6)
         ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"MUNICIPIO", None));
         ___qtablewidgetitem7 = self.tableWidget.horizontalHeaderItem(7)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"TELEFONE", None));
+        ___qtablewidgetitem7.setText(QCoreApplication.translate("MainWindow", u"UF", None));
         ___qtablewidgetitem8 = self.tableWidget.horizontalHeaderItem(8)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"EMAIL", None));
+        ___qtablewidgetitem8.setText(QCoreApplication.translate("MainWindow", u"CEP", None));
+        ___qtablewidgetitem9 = self.tableWidget.horizontalHeaderItem(9)
+        ___qtablewidgetitem9.setText(QCoreApplication.translate("MainWindow", u"TELEFONE", None));
+        ___qtablewidgetitem10 = self.tableWidget.horizontalHeaderItem(10)
+        ___qtablewidgetitem10.setText(QCoreApplication.translate("MainWindow", u"EMAIL", None));
         self.btn_excel.setText(QCoreApplication.translate("MainWindow", u"Gerar Excel", None))
         self.btn_alterar.setText(QCoreApplication.translate("MainWindow", u"Alterar", None))
         self.pushButton_8.setText(QCoreApplication.translate("MainWindow", u"Excluir", None))

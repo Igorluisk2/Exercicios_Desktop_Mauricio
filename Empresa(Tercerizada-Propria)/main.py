@@ -1,4 +1,4 @@
-from PySide6.QtCore import QCoreApplication
+from PySide6.QtCore import QCoreApplication,QPropertyAnimation,QEasingCurve
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import (QApplication, QMainWindow)
 from ui_main import Ui_MainWindow
@@ -21,9 +21,9 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         ######################################
         #Páginas do Sistema
         self.btn_home.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_home))
-        self.btn_menu_cadastrar.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_cadastro))
-        self.btn_menu_sobre.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_about))
-        self.btn_menu_contatos.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_contatos))
+        self.btn_cadastrar.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_cadastrar))
+        self.btn_sobre.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_sobre))
+        self.btn_contato.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_contatos))
         ######################################
 
     def leftMenu(self):
@@ -35,11 +35,11 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         else:
             newWidth = 9
             
-        self.animation= Qtcore.QPropertyAnimation(self.left_menu, b"maximumWidth")
+        self.animation = QPropertyAnimation(self.left_menu, b"maximumWidth")
         self.animation.setDuration(500)
         self.animation.setStartValue(width)
         self.animation.setEndValue(newWidth)
-        self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
+        self.animation.setEasingCurve(QEasingCurve.InOutQuart)
         self.animation.start()      
         
 if __name__ == "__main__":
