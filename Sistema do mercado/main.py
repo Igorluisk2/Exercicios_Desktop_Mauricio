@@ -7,7 +7,7 @@ from vendas import Vendas
 from cadastroProduto import Cadastro
 from estoque import Estoque
 class Mercado(QMainWindow):
-    def __init__(self) -> None:
+    def __init__(self):
         super().__init__()
         self.setWindowTitle("Mercado Senac")
         self.setFixedSize(800,600)
