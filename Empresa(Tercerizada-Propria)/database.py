@@ -17,7 +17,7 @@ class Data_base:
     def create_table_company(self):
         cursor = self.connection.cursor()
         cursor.execute("""
-            CREATE TABLE IF NOT EXISTS Empresa(
+            CREATE TABLE IF NOT EXISTS Empresas(
             
             CNPJ TEXT,
             NOME TEXT,
@@ -51,7 +51,8 @@ class Data_base:
         
         try:
             cursor.execute(f"""INSERT INTO Empresas {campos_tabela}
-            VALUES ({qtnd}),""",fullDataSet)
+            VALUES ({qtnd})""",fullDataSet)
+            self.connection.commit()
             return("OK")
         
         except:

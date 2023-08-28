@@ -1,8 +1,10 @@
+from PySide6 import QtCore
 from PySide6.QtCore import QCoreApplication,QPropertyAnimation,QEasingCurve
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import (QApplication, QMainWindow)
 from ui_main import Ui_MainWindow
 import sys
+from database import Data_base
 
 
 class Mainwindow(QMainWindow, Ui_MainWindow):
@@ -25,6 +27,8 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         self.btn_sobre.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_sobre))
         self.btn_contato.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_contatos))
         ######################################
+        
+        self.btn_cadastrar.clicked.connect(self.cadastrar_empresas)
 
     def leftMenu(self):
         
@@ -41,7 +45,16 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         self.animation.setEndValue(newWidth)
         self.animation.setEasingCurve(QEasingCurve.InOutQuart)
         self.animation.start()      
+    
+    def cadastrar_empresas(self):
+        db = Data_base()
+        db.connect()
         
+        '''fullDataSet = (
+            
+            self.txt_cnpj.(),self.txt_nome.text(),self.txt_logradouro.text(),self.
+        )'''
+       
 if __name__ == "__main__":
     
     app = QApplication(sys.argv)
