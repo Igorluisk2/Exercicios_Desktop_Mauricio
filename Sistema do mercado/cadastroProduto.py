@@ -1,8 +1,8 @@
 #Mercado
 import typing
 import sys
-from PySide6.QtWidgets import QApplication,QMainWindow,QLabel,QLineEdit,QVBoxLayout,QWidget,QPushButton,QTextBrowser
-from PySide6.QtCore import Qt
+from PySide2.QtWidgets import QApplication,QMainWindow,QLabel,QLineEdit,QVBoxLayout,QWidget,QPushButton,QTextBrowser
+from PySide2.QtCore import Qt
 
 
 class Cadastro(QWidget):
@@ -62,11 +62,11 @@ class Cadastro(QWidget):
             list_nome_prod.append(nome)
             list_preco_prod.append(preco)
             list_quantidade_prod.append(quantidade)
-            self.caixa_texto.setText(f"Produto Cadastrado com sucesso!\nProduto: {nome}\nPreço: {preco}\nQuantidade: {quantidade}")
+            self.caixa_texto.setText(f"Produto Cadastrado com sucesso!\nProduto: {nome}\nPreço: R${preco}\nQuantidade: {quantidade}")
             
             
         
 app = QApplication(sys.argv)
 w = Cadastro()
 w.show()
-app.exec()
+app.exec_()

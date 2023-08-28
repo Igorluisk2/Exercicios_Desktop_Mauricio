@@ -1,8 +1,8 @@
 from typing import Optional
-import PySide6.QtCore
-import PySide6.QtWidgets
+import PySide2.QtCore
+import PySide2.QtWidgets
 from app import *
-from cadastroProduto import Cadastro
+from cadastroProduto import *
 
 class Estoque(QWidget):
     def __init__(self):
@@ -16,7 +16,7 @@ class Estoque(QWidget):
         
         list
         
-app = QApplication(sys.argv)
-w = Estoque()
-w.show()
-app.exec()
+app_estoque = QApplication(sys.argv)
+w_estoque= Estoque()
+w_estoque.show()
+app_estoque.exec_()

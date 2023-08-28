@@ -2,8 +2,8 @@
 import typing
 import sys
 from typing import Optional
-from PySide6.QtWidgets import QApplication,QMainWindow,QLabel,QLineEdit,QVBoxLayout,QWidget,QPushButton,QTextBrowser
-from PySide6.QtCore import Qt
+from PySide2.QtWidgets import QApplication,QMainWindow,QLabel,QLineEdit,QVBoxLayout,QWidget,QPushButton,QTextBrowser
+from PySide2.QtCore import Qt
 
 
 class Mercado(QWidget):
