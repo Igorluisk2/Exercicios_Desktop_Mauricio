@@ -26,7 +26,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1092, 589)
+        MainWindow.resize(1275, 589)
         MainWindow.setStyleSheet(u"background-color: rgb(12, 12, 12);")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
@@ -43,7 +43,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setContentsMargins(0, -1, 0, -1)
         self.left_menu = QFrame(self.centralwidget)
         self.left_menu.setObjectName(u"left_menu")
-        self.left_menu.setMaximumSize(QSize(200, 16777215))
+        self.left_menu.setMaximumSize(QSize(9, 16777215))
         self.left_menu.setFrameShape(QFrame.StyledPanel)
         self.left_menu.setFrameShadow(QFrame.Raised)
         self.verticalLayout_2 = QVBoxLayout(self.left_menu)
@@ -103,7 +103,7 @@ class Ui_MainWindow(object):
 "}")
         self.page = QWidget()
         self.page.setObjectName(u"page")
-        self.page.setGeometry(QRect(0, 0, 182, 463))
+        self.page.setGeometry(QRect(0, 0, 63, 446))
         self.verticalLayout_4 = QVBoxLayout(self.page)
         self.verticalLayout_4.setSpacing(6)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
@@ -153,7 +153,7 @@ class Ui_MainWindow(object):
         self.toolBox.addItem(self.page, u"Page 1")
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
-        self.page_2.setGeometry(QRect(0, 0, 182, 463))
+        self.page_2.setGeometry(QRect(0, 0, 97, 463))
         self.horizontalLayout_5 = QHBoxLayout(self.page_2)
         self.horizontalLayout_5.setSpacing(0)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
@@ -518,7 +518,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.toolBox.setCurrentIndex(0)
-        self.Pages.setCurrentIndex(1)
+        self.Pages.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(0)
 
 
