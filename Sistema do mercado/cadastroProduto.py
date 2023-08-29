@@ -1,64 +1,50 @@
-#Mercado
-import typing
 import sys
-from PySide2.QtWidgets import QApplication,QMainWindow,QLabel,QLineEdit,QVBoxLayout,QWidget,QPushButton,QTextBrowser
-from PySide2.QtCore import Qt
+from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QLabel, QLineEdit, QPushButton, QListWidget, QTabWidget, QComboBox, QWidget
+class Product:
+    def __init__(self, name, price, quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
 
-
-class Cadastro(QWidget):
-    def __init__(self) :
+class RegisterTab(QWidget):
+    def __init__(self, parent):
         super().__init__()
-        #Ajustando o Layou da janela
-        self.layout = QVBoxLayout(self)
-        
-        #Labels
-        #Cadastrar os produtos do mercado
-        self.lbl_mercado = QLabel("Bem Vindos ao Mercado do Senac!")
-        self.lbl_prod_nome = QLabel("Nome do Produto: ")#Label Nome do Produto
-        self.lbl_prod_preco = QLabel("Preço do Produto: ")#Label Preço do Produto
-        self.lbl_prod_unid = QLabel("Quantidade de Produto: ")#Label de Quantidades do Produto
-        
-        #LineEdits
-        self.inp_prod_nome = QLineEdit(self)#Input Nome do Produto
-        self.inp_prod_preco = QLineEdit(self)#Input Preço do Produto
-        self.inp_prod_unid = QLineEdit(self)#Input de Quantidade do Produto
-        
-        #Botão 
-        self.btn_cadastrar_produto = QPushButton("Cadastrar")
-        self.btn_cadastrar_produto.clicked.connect(self.produto)
-        
-        #Layout de texto
-        self.caixa_texto = QTextBrowser()
-        
-        
-        #Sets de Layout na janela do programa
-        self.layout.addWidget(self.lbl_mercado)
-        self.layout.addWidget(self.lbl_prod_nome)
-        self.layout.addWidget(self.inp_prod_nome)
-        self.layout.addWidget(self.lbl_prod_preco)
-        self.layout.addWidget(self.inp_prod_preco)
-        self.layout.addWidget(self.lbl_prod_unid)
-        
-        self.layout.addWidget(self.inp_prod_unid)
-        self.layout.addWidget(self.btn_cadastrar_produto)
-        self.layout.addWidget(self.caixa_texto)
-        
-        
-    def produto(self,preco=0,quantidade=0 ):
-        nome = str(self.inp_prod_nome.text())
-        quantidade = int(self.inp_prod_preco.text())
-        preco = float(self.inp_prod_unid.text())
-        self.caixa_texto.setText(f"Produto cadastrado com Sucesso!\nPreço: R${preco}\nQuantidade: {quantidade}")
-        if quantidade == 0 or preco == 0 :
-            self.caixa_texto.setText(f"Adicione valores a Preço e Quantidade!")
-        
-        else:
-            list_nome_prod = []
-            list_preco_prod = []
-            list_quantidade_prod = []
-            
-            list_nome_prod.append(nome)
-            list_preco_prod.append(preco)
-            list_quantidade_prod.append(quantidade)
-            self.caixa_texto.setText(f"Produto Cadastrado com sucesso!\nProduto: {nome}\nPreço: R${preco}\nQuantidade: {quantidade}")
-            
+
+        self.parent = parent
+
+        layout = QVBoxLayout()
+
+        self.name_input = QLineEdit()
+        self.price_input = QLineEdit()
+        self.quantity_input = QLineEdit()
+
+        register_button = QPushButton("Cadastrar")
+        register_button.clicked.connect(self.register_product)
+
+        layout.addWidget(QLabel("Nome do Produto:"))
+        layout.addWidget(self.name_input)
+        layout.addWidget(QLabel("Preço Unitário:"))
+        layout.addWidget(self.price_input)
+        layout.addWidget(QLabel("Quantidade em Estoque:"))
+        layout.addWidget(self.quantity_input)
+        layout.addWidget(register_button)
+
+        self.register_message_label = QLabel()
+        layout.addWidget(self.register_message_label)
+
+        self.setLayout(layout)
+
+    def register_product(self):
+        name = self.name_input.text()
+        price = float(self.price_input.text())
+        quantity = int(self.quantity_input.text())
+
+        product = Product(name, price, quantity)
+        self.parent.products.append(product)
+
+        self.parent.tab_stock.update_stock_list()
+        self.parent.tab_sales.update_product_combobox()
+        self.parent.tab_sales.update_cart_list()
+        self.parent.tab_sales.update_total_label(0)  # Reset the total label
+
+        self.register_message_label.setText("Produto cadastrado com sucesso!")

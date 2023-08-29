@@ -1,36 +1,40 @@
 import sys
-import typing
-import PySide2.QtCore
-from PySide2.QtWidgets import QApplication,QLabel,QWidget,QMainWindow,QVBoxLayout,QToolBar,QAction
-from PySide2.QtGui import QPixmap
-from vendas import Vendas
-from cadastroProduto import Cadastro
-from estoque import Estoque
-class Mercado(QMainWindow):
+from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QLabel, QLineEdit, QPushButton, QListWidget, QTabWidget, QComboBox, QWidget
+from cadastroProduto import Product,RegisterTab
+from estoque import StockTab
+from vendas import SalesTab
+class MarketApp(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Mercado Senac")
-        self.setFixedSize(800,600)
-        
-        #Centralizando widgets 
-        central_widget = QWidget()
-        self.setCentralWidget(central_widget)
-        
-        #Criando um Layout Vertical
-        layout = QVBoxLayout()
-        central_widget.setLayout(layout)
-        
-        #Criando a ToolBar
-        toolbar = QToolBar()
-        self.addToolBar(toolbar)
 
-        #Colocando uma imagem na tela principal
-        lbl_img = QLabel()
-        lbl_img.setPixmap(QPixmap())
-        
-        
-        
-app = QApplication()
-janela = Mercado()
-janela.show()
-app.exec_()
+        self.products = []
+        self.cart = []
+
+        self.setWindowTitle("Mercadinho Senac")
+        self.setGeometry(100, 100, 800, 600)
+
+        self.tabs = QTabWidget()
+
+        self.init_ui()
+
+    def init_ui(self):
+        self.tab_register = RegisterTab(self)
+        self.tab_stock = StockTab(self)
+        self.tab_sales = SalesTab(self)
+
+        self.tabs.addTab(self.tab_register, "Cadastro")
+        self.tabs.addTab(self.tab_stock, "Estoque")
+        self.tabs.addTab(self.tab_sales, "Vendas")
+
+        layout = QVBoxLayout()
+        layout.addWidget(self.tabs)
+
+        central_widget = QWidget()
+        central_widget.setLayout(layout)
+        self.setCentralWidget(central_widget)
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    market_app = MarketApp()
+    market_app.show()
+    sys.exit(app.exec_())

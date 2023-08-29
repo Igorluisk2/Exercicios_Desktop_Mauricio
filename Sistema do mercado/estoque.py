@@ -1,23 +1,19 @@
-from typing import Optional
-from PySide2.QtCore import Qt
-from PySide2.QtWidgets import QApplication,QWidget,QLabel,QDialog,QPushButton,QVBoxLayout
 import sys
-
-class Estoque(QWidget):
-    def __init__(self):
+from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QLabel, QLineEdit, QPushButton, QListWidget, QTabWidget, QComboBox, QWidget
+class StockTab(QWidget):
+    def __init__(self, parent):
         super().__init__()
-        #Labels
-        lbl_prod_cadastrados = QLabel("Produtos em Estoque: ")
-        
-        
-        #Layout Do Estoque 
-        layout_estoque = QVBoxLayout(self)
-        
-        #Adicionando a Label ao Layout
-        layout_estoque.addWidget(lbl_prod_cadastrados)
-        
 
+        self.parent = parent
 
-    def produtos_em_estoque():
-        print('algumacoisa')
-        
+        layout = QVBoxLayout()
+
+        self.stock_list = QListWidget()
+        layout.addWidget(self.stock_list)
+
+        self.setLayout(layout)
+
+    def update_stock_list(self):
+        self.stock_list.clear()
+        for product in self.parent.products:
+            self.stock_list.addItem(f"{product.name} - Quantidade: {product.quantity}")
