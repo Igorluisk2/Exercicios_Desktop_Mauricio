@@ -1,7 +1,7 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QLabel, QLineEdit, QPushButton, QListWidget, QTabWidget, QComboBox, QWidget
 
-class funcio:
+class Funcionarios:
     def __init__(self, nome, horast, vhora):
         self.nome = nome
         self.horast = horast

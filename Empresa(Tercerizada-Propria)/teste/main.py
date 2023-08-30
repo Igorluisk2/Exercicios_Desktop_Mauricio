@@ -1,7 +1,7 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QLabel, QLineEdit, QPushButton, QListWidget, QTabWidget, QComboBox, QWidget
 from cadastrar import CadastroTab, Funcionarios
-from estoque import EstoqueTab
+from estoque import *
 '''from vendas import VendasTab'''
 
 class MercadoApp(QMainWindow):
@@ -22,7 +22,7 @@ class MercadoApp(QMainWindow):
 
         self.abas.addTab(self.aba_cadastro_interno, "Cadastro Interno")
         self.abas.addTab(self.aba_cadastro_terceirizado, "Cadastro Terceirizado")
-        self.abas.addTab(self.aba_estoque, "Estoque")
+        self.abas.addTab(self.aba_estoque, "Relatório")
         '''self.abas.addTab(self.aba_vendas, "Vendas")'''
 
         self.iniciar_interface()
@@ -40,7 +40,7 @@ class MercadoApp(QMainWindow):
         horast = float(self.aba_cadastro_interno.entrada_horast.text())
         vhora = float(self.aba_cadastro_interno.entrada_vhora.text())
 
-        funcio = funcio(nome, horast, vhora)
+        funcio = Funcionarios(nome, horast, vhora)
         self.funcionarios.append(funcio)
 
         self.aba_estoque.atualizar_lista_estoque()
@@ -50,20 +50,20 @@ class MercadoApp(QMainWindow):
 
         self.aba_cadastro_interno.rotulo_mensagem_cadastro.setText("Cadastro realizado com sucesso!")
 
-    def vender_funcionarios(self):
-        total_horast = 0.0
-        for funcio, vhora in self.carrinho:
-            if vhora > funcio.vhora:
-                '''self.aba_vendas.lista_vendas.addItem(f"vhoraQuantidade insuficiente para {produto.nome}.")'''
-                return
+    # def vender_funcionarios(self):
+    #     total_horast = 0.0
+    #     for funcio, vhora in self.carrinho:
+    #         if vhora > funcio.vhora:
+    #             '''self.aba_vendas.lista_vendas.addItem(f"vhoraQuantidade insuficiente para {produto.nome}.")'''
+    #             return
 
-            funcio.vhora -= vhora
-            total_horast += funcio.horast * vhora
+    #         funcio.vhora -= vhora
+    #         total_horast += funcio.horast * vhora
 
-        self.carrinho = []
-        '''self.aba_vendas.atualizar_lista_carrinho()'''
-        self.aba_estoque.atualizar_lista_estoque()
-        '''self.aba_vendas.atualizar_rotulo_total()'''
+    #     self.carrinho = []
+    #     '''self.aba_vendas.atualizar_lista_carrinho()'''
+    #     self.aba_estoque.atualizar_lista_estoque()
+    #     '''self.aba_vendas.atualizar_rotulo_total()'''
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

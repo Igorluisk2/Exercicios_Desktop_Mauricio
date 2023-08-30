@@ -1,4 +1,4 @@
-import sys
+'''import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QLabel, QLineEdit, QPushButton, QListWidget, QTabWidget, QComboBox, QWidget
 
 class VendasTab(QWidget):
@@ -76,4 +76,4 @@ class VendasTab(QWidget):
         self.rotulo_total.setText(f"Total: R$ {total_preco:.2f}")
 
     def limpar_campos(self):
-        self.entrada_quantidade_vendas.clear()
+        self.entrada_quantidade_vendas.clear()'''
