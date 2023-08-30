@@ -1,9 +1,11 @@
-from app import *
+import sys
+from PySide6.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget, QHBoxLayout
 
-#Função de depósito
+class RealizarDeposito:
+    def __init__(self, conta_app, valor):
+        self.conta_app = conta_app
+        self.valor = valor
 
-def depositar(self):
-        self.saldo=int(self.valor_Qline.text())+int(self.totaldep.text())
-        self.saldostr=str(self.saldo)
-        self.valor_Qlabel.setText('Saldo = R$ {},00'.format(self.saldo))
-        self.totaldep.setText(self.saldostr)
+    def executar(self):
+        if self.conta_app.conta:
+            self.conta_app.realizar_deposito(self.valor)

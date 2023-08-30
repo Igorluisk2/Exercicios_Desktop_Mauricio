@@ -1,11 +1,14 @@
-from app import *
-#Função de Saque
-def sacar(self):
-    self.retirar=int(self.totaldep.text())-int(self.sacar_Qline.text())-5
-    self.retirarstr=str(self.retirar)
-        
-    if self.retirar>=0:
-        self.sacar_Qlabel.setText('Saldo  = R$ {},00'.format(self.retirar))
-        self.totaldep.setText(self.retirarstr)
-    else:
-        self.sacar_Qlabel.setText('Saldo insuficiente!!\nFavor entrar em contato com seu gerente para uma possível liberação de limite de conta')
+import sys
+from PySide6.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget, QHBoxLayout
+class RealizarSaque:
+    def __init__(self, conta_app, valor):
+        self.conta_app = conta_app
+        self.valor = valor
+
+    def executar(self):
+        if self.conta_app.conta:
+            if self.conta_app.realizar_saque(self.valor):
+                return "Saque realizado com sucesso."
+            else:
+                return "Saldo insuficiente."
+        return None
