@@ -166,7 +166,7 @@ QPushButton{
                <number>0</number>
               </property>
               <item>
-               <widget class="QPushButton" name="btn_home">
+               <widget class="QPushButton" name="btn_menu_home">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -193,7 +193,7 @@ QPushButton{
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btn_cadastrar">
+               <widget class="QPushButton" name="btn_menu_cadastrar">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -220,7 +220,7 @@ QPushButton{
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btn_contato">
+               <widget class="QPushButton" name="btn_menu_contato">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -247,7 +247,7 @@ QPushButton{
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btn_sobre">
+               <widget class="QPushButton" name="btn_menu_sobre">
                 <property name="minimumSize">
                  <size>
                   <width>0</width>
@@ -444,7 +444,7 @@ QPushButton{
               <item>
                <widget class="QTabWidget" name="tabWidget">
                 <property name="currentIndex">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="tab">
                  <attribute name="title">
@@ -597,7 +597,7 @@ background-color: rgb(249,249,249);</string>
                    </widget>
                   </item>
                   <item alignment="Qt::AlignHCenter">
-                   <widget class="QPushButton" name="btn_cadastrar_2">
+                   <widget class="QPushButton" name="btn_cadastrar">
                     <property name="minimumSize">
                      <size>
                       <width>160</width>

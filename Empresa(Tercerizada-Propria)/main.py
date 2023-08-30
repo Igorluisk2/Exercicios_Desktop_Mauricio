@@ -22,10 +22,10 @@ class Mainwindow(QMainWindow, Ui_MainWindow):
         
         ######################################
         #Páginas do Sistema
-        self.btn_home.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_home))
-        self.btn_cadastrar.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_cadastrar))
-        self.btn_sobre.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_sobre))
-        self.btn_contato.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_contatos))
+        self.btn_menu_home.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_home))
+        self.btn_menu_cadastrar.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_cadastrar))
+        self.btn_menu_sobre.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_sobre))
+        self.btn_menu_contato.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_contatos))
         ######################################
         
         self.btn_cadastrar.clicked.connect(self.cadastrar_empresas)
