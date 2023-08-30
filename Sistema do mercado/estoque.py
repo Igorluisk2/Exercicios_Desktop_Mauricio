@@ -1,19 +1,21 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QLabel, QLineEdit, QPushButton, QListWidget, QTabWidget, QComboBox, QWidget
-class StockTab(QWidget):
-    def __init__(self, parent):
+
+class EstoqueTab(QWidget):
+    def __init__(self, mercado_app):
         super().__init__()
+        self.mercado_app = mercado_app
+        self.init_ui()
 
-        self.parent = parent
-
+    def init_ui(self):
         layout = QVBoxLayout()
 
-        self.stock_list = QListWidget()
-        layout.addWidget(self.stock_list)
+        self.lista_estoque = QListWidget()
+        layout.addWidget(self.lista_estoque)
 
         self.setLayout(layout)
 
-    def update_stock_list(self):
-        self.stock_list.clear()
-        for product in self.parent.products:
-            self.stock_list.addItem(f"{product.name} - Quantidade: {product.quantity}")
+    def atualizar_lista_estoque(self):
+        self.lista_estoque.clear()
+        for produto in self.mercado_app.produtos:
+            self.lista_estoque.addItem(f"{produto.nome} - Quantidade: {produto.quantidade}")

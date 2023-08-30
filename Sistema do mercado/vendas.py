@@ -1,88 +1,79 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QLabel, QLineEdit, QPushButton, QListWidget, QTabWidget, QComboBox, QWidget
-class SalesTab(QWidget):
-    def __init__(self, parent):
+
+class VendasTab(QWidget):
+    def __init__(self, mercado_app):
         super().__init__()
+        self.mercado_app = mercado_app
+        self.init_ui()
 
-        self.parent = parent
-
+    def init_ui(self):
         layout = QVBoxLayout()
 
-        self.sales_list = QListWidget()
-        layout.addWidget(self.sales_list)
+        self.lista_vendas = QListWidget()
+        layout.addWidget(self.lista_vendas)
 
-        self.product_combobox = QComboBox()
-        self.product_combobox.currentIndexChanged.connect(self.update_price_label)
+        self.combo_produto = QComboBox()
+        self.combo_produto.currentIndexChanged.connect(self.atualizar_rotulo_preco)
         layout.addWidget(QLabel("Selecione um Produto:"))
-        layout.addWidget(self.product_combobox)
+        layout.addWidget(self.combo_produto)
 
-        self.price_label = QLabel()  # Price label for selected product
-        layout.addWidget(self.price_label)
+        self.rotulo_preco = QLabel()  # Rótulo de preço para o produto selecionado
+        layout.addWidget(self.rotulo_preco)
 
-        self.quantity_input_sales = QLineEdit()
+        self.entrada_quantidade_vendas = QLineEdit()
         layout.addWidget(QLabel("Quantidade Vendida:"))
-        layout.addWidget(self.quantity_input_sales)
+        layout.addWidget(self.entrada_quantidade_vendas)
 
-        add_to_cart_button = QPushButton("Adicionar ao Carrinho")
-        add_to_cart_button.clicked.connect(self.add_to_cart)
-        layout.addWidget(add_to_cart_button)
+        botao_adicionar_ao_carrinho = QPushButton("Adicionar ao Carrinho")
+        botao_adicionar_ao_carrinho.clicked.connect(self.adicionar_ao_carrinho)
+        layout.addWidget(botao_adicionar_ao_carrinho)
 
-        self.cart_list = QListWidget()
-        layout.addWidget(self.cart_list)
+        self.lista_carrinho = QListWidget()
+        layout.addWidget(self.lista_carrinho)
 
-        self.total_label = QLabel("Total: R$ 0.00")
-        layout.addWidget(self.total_label)
+        self.rotulo_total = QLabel("Total: R$ 0.00")
+        layout.addWidget(self.rotulo_total)
 
-        sell_button = QPushButton("Finalizar Venda")
-        sell_button.clicked.connect(self.sell_products)
-        layout.addWidget(sell_button)
+        botao_finalizar_venda = QPushButton("Finalizar Venda")
+        botao_finalizar_venda.clicked.connect(self.mercado_app.vender_produtos)
+        layout.addWidget(botao_finalizar_venda)
 
         self.setLayout(layout)
 
-    def update_product_combobox(self):
-        self.product_combobox.clear()
-        for product in self.parent.products:
-            self.product_combobox.addItem(product.name)
+    def atualizar_combo_produto(self):
+        self.combo_produto.clear()
+        for produto in self.mercado_app.produtos:
+            self.combo_produto.addItem(produto.nome)
 
-    def update_price_label(self, index):
-        if index >= 0 and index < len(self.parent.products):
-            product = self.parent.products[index]
-            self.price_label.setText(f"Preço: R$ {product.price:.2f}")
+    def atualizar_rotulo_preco(self, index):
+        if index >= 0 and index < len(self.mercado_app.produtos):
+            produto = self.mercado_app.produtos[index]
+            self.rotulo_preco.setText(f"Preço: R$ {produto.preco:.2f}")
 
-    def add_to_cart(self):
-        product_index = self.product_combobox.currentIndex()
-        product = self.parent.products[product_index]
-        quantity = int(self.quantity_input_sales.text())
+    def adicionar_ao_carrinho(self):
+        indice_produto = self.combo_produto.currentIndex()
+        produto = self.mercado_app.produtos[indice_produto]
+        quantidade = int(self.entrada_quantidade_vendas.text())
 
-        if quantity > product.quantity:
-            self.sales_list.addItem("Quantidade insuficiente em estoque.")
+        if quantidade > produto.quantidade:
+            self.lista_vendas.addItem("Quantidade insuficiente em estoque.")
             return
 
-        self.parent.cart.append((product, quantity))
-        self.update_cart_list()
-        self.update_total_label()
+        self.mercado_app.carrinho.append((produto, quantidade))
+        self.atualizar_lista_carrinho()
+        self.atualizar_rotulo_total()
 
-    def update_cart_list(self):
-        self.cart_list.clear()
-        for product, quantity in self.parent.cart:
-            self.cart_list.addItem(f"{product.name} - Quantidade: {quantity}")
+        self.limpar_campos()
 
-    def sell_products(self):
-        total_price = 0.0
-        for product, quantity in self.parent.cart:
-            if quantity > product.quantity:
-                self.sales_list.addItem(f"Quantidade insuficiente para {product.name}.")
-                return
+    def atualizar_lista_carrinho(self):
+        self.lista_carrinho.clear()
+        for produto, quantidade in self.mercado_app.carrinho:
+            self.lista_carrinho.addItem(f"{produto.nome} - Quantidade: {quantidade}")
 
-            product.quantity -= quantity
-            total_price += product.price * quantity
+    def atualizar_rotulo_total(self):
+        total_preco = sum(produto.preco * quantidade for produto, quantidade in self.mercado_app.carrinho)
+        self.rotulo_total.setText(f"Total: R$ {total_preco:.2f}")
 
-        self.parent.cart = []
-        self.update_cart_list()
-        self.parent.tab_stock.update_stock_list()
-        self.update_total_label(total_price)
-
-    def update_total_label(self, total=None):
-        if total is None:
-            total = sum(product.price * quantity for product, quantity in self.parent.cart)
-        self.total_label.setText(f"Total: R$ {total:.2f}")
+    def limpar_campos(self):
+        self.entrada_quantidade_vendas.clear()
