@@ -1,7 +1,7 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QLabel, QLineEdit, QPushButton, QListWidget, QTabWidget, QComboBox, QWidget
 from cadastrar import CadastroTab, Funcionarios
-from estoque import *
+from estoque import EstoqueTab
 '''from vendas import VendasTab'''
 
 class MercadoApp(QMainWindow):
