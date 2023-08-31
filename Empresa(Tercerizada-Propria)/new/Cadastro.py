@@ -2,6 +2,7 @@ import sys
 from Funcionario import *
 from error_mensagens import MensagemErro
 from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QWidget, QLabel, QLineEdit, QPushButton, QTextBrowser, QCheckBox
+from PySide6.QtGui import QColor
 
 
 class JanelaPrincipal(QMainWindow):
@@ -15,6 +16,9 @@ class JanelaPrincipal(QMainWindow):
         self.setCentralWidget(self.central_widget)
 
         self.lbl_layout = QVBoxLayout()
+        
+        self.BK_Color = QColor(240,255,255) #cor background
+        self.setStyleSheet(f"background-color: {self.BK_Color.name()};")
 
         self.lbl_dados_funcionario = QLabel("Informe os dados do funcionário:")
         self.lbl_layout.addWidget(self.lbl_dados_funcionario)
