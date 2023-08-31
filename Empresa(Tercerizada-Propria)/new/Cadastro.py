@@ -8,7 +8,7 @@ class JanelaPrincipal(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Sistema de Pagamento de Funcionários")
+        self.setWindowTitle("Registro de Pagamento de Funcionários")
         self.setGeometry(300, 300, 700, 700)
 
         self.central_widget = QWidget()
@@ -95,6 +95,6 @@ class JanelaPrincipal(QMainWindow):
 
 
             else:
-                self.txtb_exibir_texto.append('Pagamento Registrado')
+                self.txtb_exibir_texto.append('Registro realizado')
             
                 
