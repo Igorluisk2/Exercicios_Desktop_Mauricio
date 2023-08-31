@@ -8,15 +8,15 @@ class JanelaPrincipal(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Calculadora de Pagamento de Funcionários")
-        self.setGeometry(100, 100, 400, 400)
+        self.setWindowTitle("Sistema de Pagamento de Funcionários")
+        self.setGeometry(300, 300, 700, 700)
 
         self.central_widget = QWidget()
         self.setCentralWidget(self.central_widget)
 
         self.lbl_layout = QVBoxLayout()
 
-        self.lbl_dados_funcionario = QLabel("Digite os dados do funcionário:")
+        self.lbl_dados_funcionario = QLabel("Informe os dados do funcionário:")
         self.lbl_layout.addWidget(self.lbl_dados_funcionario)
 
         self.txt_nome = QLineEdit()
@@ -27,9 +27,9 @@ class JanelaPrincipal(QMainWindow):
         self.txt_hora.setPlaceholderText("Horas Trabalhadas")
         self.lbl_layout.addWidget(self.txt_hora)
 
-        self.txt_valor_por_hora = QLineEdit()
-        self.txt_valor_por_hora.setPlaceholderText("Valor por Hora")
-        self.lbl_layout.addWidget(self.txt_valor_por_hora)
+        self.txt_valor_da_hora = QLineEdit()
+        self.txt_valor_da_hora.setPlaceholderText("Valor da Hora trabalhada")
+        self.lbl_layout.addWidget(self.txt_valor_da_hora)
 
         self.ck_terceirizado = QCheckBox("Terceirizado")
         self.lbl_layout.addWidget(self.ck_terceirizado)
@@ -60,11 +60,11 @@ class JanelaPrincipal(QMainWindow):
                 terceirizado = self.ck_terceirizado.isChecked()
                 despesa_adicional = float(self.txt_despesa_adicional.text()) if terceirizado else 0
                 horas_trabalhadas = float(self.txt_hora.text())
-                valor_por_hora = float(self.txt_valor_por_hora.text())
+                valor_da_hora = float(self.txt_valor_da_hora.text())
                 
 
 
-                if despesa_adicional < 0 or horas_trabalhadas < 0 or valor_por_hora < 0:
+                if despesa_adicional < 0 or horas_trabalhadas < 0 or valor_da_hora < 0:
                     self.erro_mensagem = MensagemErro()
                     self.erro_mensagem.erro_funcionario_pagamento()
 
@@ -73,15 +73,15 @@ class JanelaPrincipal(QMainWindow):
                 
                     nome = self.txt_nome.text()
                     
-                    funcionario = Funcionario(nome, horas_trabalhadas, valor_por_hora, terceirizado, despesa_adicional)
+                    funcionario = Funcionario(nome, horas_trabalhadas, valor_da_hora, terceirizado, despesa_adicional)
                     self.funcionarios.append(funcionario)
 
                     self.txtb_exibir_texto.append(f"Funcionário adicionado: {funcionario}")
                     
                     self.txt_nome.clear()
                     self.txt_hora.clear()
-                    self.txt_valor_por_hora.clear()
-                    self.txt_valor_por_hora.clear()
+                    self.txt_valor_da_hora.clear()
+                    self.txt_valor_da_hora.clear()
                     self.ck_terceirizado.setChecked(False)
                 
         except:
@@ -90,7 +90,7 @@ class JanelaPrincipal(QMainWindow):
 
 
         else:
-            if self.txt_nome.text().isdigit() == True or despesa_adicional < 0 or horas_trabalhadas < 0 or valor_por_hora < 0:
+            if self.txt_nome.text().isdigit() == True or despesa_adicional < 0 or horas_trabalhadas < 0 or valor_da_hora < 0:
                 pass
 
 
