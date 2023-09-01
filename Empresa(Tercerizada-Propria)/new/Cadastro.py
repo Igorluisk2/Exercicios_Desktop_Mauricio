@@ -1,6 +1,6 @@
 import sys
 from Funcionario import *
-from error_mensagens import MensagemErro
+from Error import MensagemErro
 from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QWidget, QLabel, QLineEdit, QPushButton, QTextBrowser, QCheckBox
 from PySide6.QtGui import QColor,QCursor
 from PySide6.QtCore import Qt
@@ -119,6 +119,6 @@ class JanelaPrincipal(QMainWindow):
 
 
             else:
-                self.txtb_exibir_texto.append('Registro realizado') #confirma o recebimento e armazenamento do dado
+                self.txtb_exibir_texto.append('Registro realizado!') #confirma o recebimento e armazenamento do dado
             
                 
