@@ -2,19 +2,23 @@ import sys
 from Funcionario import *
 from error_mensagens import MensagemErro
 from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QWidget, QLabel, QLineEdit, QPushButton, QTextBrowser, QCheckBox
+from PySide6.QtGui import QColor
 
 
 class JanelaPrincipal(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Sistema de Pagamento de Funcionários")
+        self.setWindowTitle("Registro de Pagamento de Funcionários")
         self.setGeometry(300, 300, 700, 700)
 
         self.central_widget = QWidget()
         self.setCentralWidget(self.central_widget)
 
         self.lbl_layout = QVBoxLayout()
+        
+        self.BK_Color = QColor(240,255,255) #cor background
+        self.setStyleSheet(f"background-color: {self.BK_Color.name()};")
 
         self.lbl_dados_funcionario = QLabel("Informe os dados do funcionário:")
         self.lbl_layout.addWidget(self.lbl_dados_funcionario)
@@ -95,6 +99,6 @@ class JanelaPrincipal(QMainWindow):
 
 
             else:
-                self.txtb_exibir_texto.append('Pagamento Registrado')
+                self.txtb_exibir_texto.append('Registro realizado')
             
                 
