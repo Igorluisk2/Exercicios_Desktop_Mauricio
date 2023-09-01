@@ -53,8 +53,10 @@ class JanelaPrincipal(QMainWindow):
         self.lbl_layout.addWidget(self.txt_despesa_adicional)
         
 
-        self.btn_adicionar = QPushButton("Adicionar Funcionário") #botão que finaliza a adição de funcionário
+        self.btn_adicionar = QPushButton("Registrar dados") #botão que finaliza a adição de funcionário
         self.btn_adicionar.clicked.connect(self.adicionar_funcionario)
+        self.BK_Color_2 = QColor(152,251,152)
+        self.btn_adicionar.setStyleSheet(f"background-color: {self.BK_Color_2.name()};")
         self.btn_adicionar.setCursor(QCursor(Qt.PointingHandCursor)) #mudança de cursor sobre o botão
         
 
@@ -62,6 +64,9 @@ class JanelaPrincipal(QMainWindow):
         
 
         self.txtb_exibir_texto = QTextBrowser()
+        self.BK_Color_3 = QColor(255,255,255)
+        self.txtb_exibir_texto.setStyleSheet(f"background-color: {self.BK_Color_3.name()};")
+
         self.lbl_layout.addWidget(self.txtb_exibir_texto)
         
 
