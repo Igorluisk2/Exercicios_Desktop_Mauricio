@@ -6,7 +6,7 @@ from PySide6.QtGui import QColor,QCursor
 from PySide6.QtCore import Qt
 
 
-class JanelaPrincipal(QMainWindow):
+class JanelaInicial(QMainWindow):
     def __init__(self):
         super().__init__()
 
@@ -63,11 +63,11 @@ class JanelaPrincipal(QMainWindow):
         self.lbl_layout.addWidget(self.btn_adicionar)
         
 
-        self.txtb_exibir_texto = QTextBrowser()
+        self.txt_exibir_texto = QTextBrowser()
         self.BK_Color_3 = QColor(255,255,255)
-        self.txtb_exibir_texto.setStyleSheet(f"background-color: {self.BK_Color_3.name()};")
+        self.txt_exibir_texto.setStyleSheet(f"background-color: {self.BK_Color_3.name()};")
 
-        self.lbl_layout.addWidget(self.txtb_exibir_texto)
+        self.lbl_layout.addWidget(self.txt_exibir_texto)
         
 
         self.central_widget.setLayout(self.lbl_layout)
@@ -103,7 +103,7 @@ class JanelaPrincipal(QMainWindow):
                     self.funcionarios.append(funcionario)
                     
 
-                    self.txtb_exibir_texto.append(f"Funcionário adicionado: {funcionario}")
+                    self.txt_exibir_texto.append(f"Funcionário adicionado: {funcionario}")
                     
                     
                     self.txt_nome.clear()
@@ -124,6 +124,6 @@ class JanelaPrincipal(QMainWindow):
 
 
             else:
-                self.txtb_exibir_texto.append('Registro realizado!') #confirma o recebimento e armazenamento do dado
+                self.txt_exibir_texto.append('Registro realizado!') #confirma o recebimento e armazenamento do dado
             
                 
